@@ -51,7 +51,6 @@ The platform is designed around a decoupled, 6-tier pipeline to guarantee high a
 | 💾 **Persistence** | **SQLite 3** | Zero-configuration, ACID-compliant database ideal for containerized deployments and evaluator test runs without external DB provisioning. |
 | 🎨 **Frontend** | **Jinja2 + HTML5 / CSS3 / Vanilla JS** | Lightweight, zero-build-step responsive UI with status badges, formula breakdown cards, and raw JSON copy/export features. |
 | 🧪 **Testing** | **unittest & pytest** | Comprehensive unit and integration test coverage for validation formulas, edge cases, and API routes. |
----
 ```
 ## 🌍 Deployed URLs & Public Repository
 
