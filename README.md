@@ -7,11 +7,6 @@ An end-to-end, production-ready AI-powered document intelligence platform that i
 
 ---
 
-## Demo Video
-
-"C:\Users\POOJA\Videos\Screen Recordings\Screen Recording 2026-09-10 213941.mp4"
-
-
 ## 🏗️ Overview & Architecture
 
 The platform is designed around a decoupled, 6-tier pipeline to guarantee high availability, testability, and strict financial auditability:
