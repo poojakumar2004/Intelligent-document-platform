@@ -11,21 +11,30 @@ An end-to-end, production-ready AI-powered document intelligence platform that i
 
 The platform is designed around a decoupled, 6-tier pipeline to guarantee high availability, testability, and strict financial auditability:
 
-📄 Document Upload (PDF / JPG / PNG)
-        ↓
-🛡️ Document Validation Gate
-        ↓
-🔍 Text Extraction & OCR
-        ↓
-🤖 AI-based Field & Table Extraction
-        ↓
-🎯 Evidence Grounding & Confidence Scoring
-        ↓
-🧮 Financial Calculation Validation Engine
-        ↓
-💾 Persistent Storage
-        ↓
-🌐 Delivery Layer (Dashboard + REST API)
+```text
+📄 Upload Document
+        │
+        ▼
+🛡️ Validate File
+        │
+        ▼
+🔍 OCR & PDF Parsing
+        │
+        ▼
+🤖 AI Information Extraction
+        │
+        ▼
+🎯 Evidence Grounding
+        │
+        ▼
+🧮 Financial Validation
+        │
+        ▼
+💾 Store Results
+        │
+        ▼
+🌐 Dashboard • REST API • Swagger
+```
 
 
 ![Architecture Diagram](docs/architecture.png)
