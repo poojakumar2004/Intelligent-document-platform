@@ -1,5 +1,4 @@
-# 🧠 NeuroDoc AI
-#﻿# Intelligent Document Extraction, Validation & API Platform
+# 🧠 #﻿# Intelligent Document Extraction, Validation & API Platform
 
 [![FastAPI](https://img.shields.io/badge/API-FastAPI-009688.svg?style=flat&logo=FastAPI)](https://fastapi.tiangolo.com)
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB.svg?style=flat&logo=python)](https://www.python.org/)
