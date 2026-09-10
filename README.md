@@ -7,6 +7,9 @@ An end-to-end, production-ready AI-powered document intelligence platform that i
 
 ---
 
+## Demo Video
+
+
 ## 🏗️ Overview & Architecture
 
 The platform is designed around a decoupled, 6-tier pipeline to guarantee high availability, testability, and strict financial auditability:
@@ -318,5 +321,3 @@ The following AI-assisted development tools were used during implementation in a
 - Mathematical edge-case test generation
 - Documentation refinement
 - PyMuPDF-based PDF visualization support
-
-> **Note:** All business logic, document validation workflow, financial reconciliation formulas, API architecture, and overall system design were reviewed, validated, and finalized by the project author.
