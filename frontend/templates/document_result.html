@@ -1,0 +1,324 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ doc.document_name }} - Document Intelligence Result</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="/" class="navbar-brand">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+        <polyline points="14 2 14 8 20 8"></polyline>
+      </svg>
+      Document Intelligence Platform
+    </a>
+    <div class="navbar-links">
+      <a href="/">← Back to Dashboard</a>
+      <a href="/api/v1/documents/{{ doc.document_name }}" target="_blank">API JSON</a>
+      <a href="/docs" target="_blank">Swagger Docs</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Header Summary Card -->
+    <div class="card" style="margin-bottom: 1.5rem;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <h1 style="font-size: 1.5rem; font-weight: 700;">{{ doc.document_name }}</h1>
+            {% if doc.processing_status == "PASS" %}
+              <span class="badge badge-pass" style="font-size: 0.85rem;">PASS</span>
+            {% else %}
+              <span class="badge badge-fail" style="font-size: 0.85rem;">FAILED</span>
+            {% endif %}
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem;">
+            Category: <strong style="color: var(--text-main);">{{ doc.document_type.replace('_', ' ').title() }}</strong>
+            &nbsp;|&nbsp; Processed: {{ doc.created_at[:19].replace('T', ' ') }}
+            &nbsp;|&nbsp; Duration: {{ doc.processing_metadata.processing_time_ms }} ms
+            &nbsp;|&nbsp; Engine: {{ doc.processing_metadata.ocr_engine }}
+          </p>
+        </div>
+
+        <div style="text-align: right;">
+          <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Overall Confidence</div>
+          <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">
+            {% if doc.overall_confidence %}{{ (doc.overall_confidence * 100)|round|int }}%{% else %}N/A{% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- File Validation Layer Card -->
+    <div class="card">
+      <div class="card-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        1. File Validation Layer
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+        <div>
+          <div class="kv-label">Detected MIME Type</div>
+          <div style="font-weight: 600; margin-top: 0.2rem;">{{ doc.file_validation.file_type }}</div>
+        </div>
+        <div>
+          <div class="kv-label">Supported Format</div>
+          <div style="margin-top: 0.2rem;">
+            {% if doc.file_validation.is_supported %}
+              <span class="badge badge-pass">Supported</span>
+            {% else %}
+              <span class="badge badge-fail">Unsupported</span>
+            {% endif %}
+          </div>
+        </div>
+        <div>
+          <div class="kv-label">File Readability</div>
+          <div style="margin-top: 0.2rem;">
+            {% if doc.file_validation.is_readable %}
+              <span class="badge badge-pass">Readable</span>
+            {% else %}
+              <span class="badge badge-fail">Unreadable</span>
+            {% endif %}
+          </div>
+        </div>
+        <div>
+          <div class="kv-label">Page Count</div>
+          <div style="font-weight: 600; margin-top: 0.2rem;">{{ doc.file_validation.page_count }} (Max: 3)</div>
+        </div>
+        <div>
+          <div class="kv-label">Validation Status</div>
+          <div style="margin-top: 0.2rem;">
+            <span class="badge badge-pass">{{ doc.file_validation.status }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Financial Validation Checks Card -->
+    <div class="card">
+      <div class="card-title" style="justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="20" x2="18" y2="10"></line>
+            <line x1="12" y1="20" x2="12" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="14"></line>
+          </svg>
+          2. Financial Calculation Validation
+        </div>
+        <div>
+          {% if doc.validation.overall_status == "PASS" %}
+            <span class="badge badge-pass">Financial Checks: PASS</span>
+          {% else %}
+            <span class="badge badge-fail">Financial Checks: FAIL</span>
+          {% endif %}
+        </div>
+      </div>
+
+      {% if doc.validation.issues %}
+        <div class="alert alert-danger" style="margin-top: 0.5rem;">
+          <div>
+            <strong>Discrepancies Detected:</strong>
+            <ul style="margin-left: 1.25rem; margin-top: 0.25rem;">
+              {% for issue in doc.validation.issues %}
+                <li>{{ issue }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% endif %}
+
+      <div class="checks-grid">
+        {% for check in doc.validation.checks %}
+          <div class="check-card {{ check.status.lower() }}">
+            <div class="check-header">
+              <span class="check-title">{{ check.name.replace('_', ' ').title() }}</span>
+              {% if check.status == "PASS" %}
+                <span class="badge badge-pass">PASS</span>
+              {% elif check.status == "FAIL" %}
+                <span class="badge badge-fail">FAIL</span>
+              {% else %}
+                <span class="badge badge-na">N/A</span>
+              {% endif %}
+            </div>
+
+            {% if check.period %}
+              <div style="font-size: 0.75rem; color: var(--primary); font-weight: 600; margin-bottom: 0.3rem;">
+                Period: {{ check.period }}
+              </div>
+            {% endif %}
+
+            <code class="check-formula">{{ check.formula }}</code>
+
+            <div class="check-math">
+              <div>Calculated: <strong>{{ check.calculated_value if check.calculated_value is not none else "N/A" }}</strong></div>
+              <div>Reported: <strong>{{ check.reported_value if check.reported_value is not none else "N/A" }}</strong></div>
+              <div>Variance: <strong>{{ check.variance if check.variance is not none else "N/A" }}</strong></div>
+            </div>
+
+            {% if check.message %}
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem; font-style: italic;">
+                {{ check.message }}
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Extracted Key-Value Fields Card -->
+    <div class="card">
+      <div class="card-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="4 7 4 4 20 4 20 7"></polyline>
+          <line x1="9" y1="20" x2="15" y2="20"></line>
+          <line x1="12" y1="4" x2="12" y2="20"></line>
+        </svg>
+        3. Extracted Fields & Grounding
+      </div>
+
+      <div class="kv-grid">
+        {% for key, val in doc.extracted_data.items() %}
+          {% if key not in ["line_items", "financial_table", "period_data", "periods"] %}
+            {% set is_dict = val is mapping %}
+            {% set f_val = val.value if is_dict else val %}
+            {% set is_missing = f_val is none %}
+            <div class="kv-item {% if is_missing %}missing{% endif %}">
+              <div class="kv-label">{{ key.replace('_', ' ') }}</div>
+              <div class="kv-value">
+                {% if is_missing %}
+                  <span style="color: var(--danger); font-size: 0.9rem; font-weight: 500;">Missing / Null</span>
+                {% else %}
+                  {{ f_val }}
+                {% endif %}
+              </div>
+              {% if is_dict and val.evidence %}
+                <div class="kv-meta">
+                  <span>Page: {{ val.evidence.page_number or 1 }}</span>
+                  <span>Conf: {{ (val.confidence * 100)|round|int }}%</span>
+                </div>
+                {% if val.evidence.source_text %}
+                  <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.3rem; background: #f8fafc; padding: 0.2rem 0.4rem; border-radius: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="{{ val.evidence.source_text }}">
+                    Source: "{{ val.evidence.source_text }}"
+                  </div>
+                {% endif %}
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Extracted Tables & Line Items -->
+    {% if doc.extracted_data.line_items %}
+      <div class="card">
+        <div class="card-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="8" y1="6" x2="21" y2="6"></line>
+            <line x1="8" y1="12" x2="21" y2="12"></line>
+            <line x1="8" y1="18" x2="21" y2="18"></line>
+            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+          </svg>
+          Extracted Invoice Line Items ({{ doc.extracted_data.line_items|length }})
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in doc.extracted_data.line_items %}
+                <tr>
+                  <td>{{ loop.index }}</td>
+                  <td style="font-weight: 500;">{{ item.description }}</td>
+                  <td>{{ item.quantity }}</td>
+                  <td>{{ item.unit_price }}</td>
+                  <td style="font-weight: 600;">{{ item.amount }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if doc.extracted_data.financial_table %}
+      <div class="card">
+        <div class="card-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="3" y1="9" x2="21" y2="9"></line>
+            <line x1="9" y1="21" x2="9" y2="9"></line>
+          </svg>
+          Financial Statement Items
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Line Item</th>
+                {% for p in doc.extracted_data.periods %}
+                  <th style="text-align: right;">{{ p }}</th>
+                {% endfor %}
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in doc.extracted_data.financial_table %}
+                <tr>
+                  <td style="font-weight: 500;">{{ row.line_item }}</td>
+                  {% for p in doc.extracted_data.periods %}
+                    <td style="text-align: right; font-weight: 600;">
+                      {% if row.periods.get(p) is not none %}
+                        {{ "{:,.2f}".format(row.periods.get(p)) }}
+                      {% else %}
+                        -
+                      {% endif %}
+                    </td>
+                  {% endfor %}
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    {% endif %}
+
+    <!-- Raw Structured JSON Inspector -->
+    <div class="card">
+      <div class="card-title" style="justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+          4. Structured JSON Inspector
+        </div>
+        <div>
+          <button id="copyBtn" onclick="copyJson()" class="btn btn-secondary" style="padding: 0.35rem 0.75rem; font-size: 0.8rem;">
+            Copy JSON
+          </button>
+          <a href="/api/v1/documents/{{ doc.document_name }}" target="_blank" class="btn btn-primary" style="padding: 0.35rem 0.75rem; font-size: 0.8rem; margin-left: 0.5rem;">
+            Raw API View
+          </a>
+        </div>
+      </div>
+      <pre class="json-viewer" id="rawJsonText">{{ doc.to_dict() | tojson(indent=2) }}</pre>
+    </div>
+  </div>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

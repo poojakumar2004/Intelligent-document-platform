@@ -1,0 +1,110 @@
+{
+  "document_name": "batch1-1109.jpg",
+  "document_type": "invoice",
+  "processing_status": "PASS",
+  "overall_confidence": 0.96,
+  "file_validation": {
+    "file_type": "image/jpeg",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 1,
+    "status": "PASS"
+  },
+  "extracted_data": {
+    "invoice_number": {
+      "value": "94404257",
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Invoice no: 94404257",
+        "page_number": 1
+      }
+    },
+    "invoice_date": {
+      "value": null,
+      "confidence": null,
+      "page_number": null,
+      "evidence": null
+    },
+    "vendor_name": {
+      "value": "Client:",
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Seller:\tClient:",
+        "page_number": 1
+      }
+    },
+    "customer_name": {
+      "value": null,
+      "confidence": null,
+      "page_number": null,
+      "evidence": null
+    },
+    "currency": {
+      "value": "USD",
+      "confidence": 0.99,
+      "page_number": 1
+    },
+    "subtotal": {
+      "value": 138.9,
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Total\t$ 126,27\t$ 12,63\t$ 138,90",
+        "page_number": 1
+      }
+    },
+    "tax_amount": {
+      "value": 0.0,
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": null
+    },
+    "discount": {
+      "value": 0.0,
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": null
+    },
+    "total_amount": {
+      "value": 138.9,
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Total\t$ 126,27\t$ 12,63\t$ 138,90",
+        "page_number": 1
+      }
+    },
+    "cash_paid": null,
+    "change": null,
+    "line_items": []
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "invoice_total_check",
+        "period": null,
+        "formula": "subtotal + tax_amount - discount",
+        "operands": {
+          "subtotal": 138.9,
+          "tax_amount": 0.0,
+          "discount": 0.0
+        },
+        "calculated_value": 138.9,
+        "reported_value": 138.9,
+        "variance": 0.0,
+        "status": "PASS",
+        "message": "Calculation matches reported value."
+      }
+    ],
+    "overall_status": "PASS",
+    "issues": []
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_engine": "OCR.Space-API",
+    "processed_at": "2026-09-10T13:17:45.739060+00:00",
+    "processing_time_ms": 7701
+  }
+}

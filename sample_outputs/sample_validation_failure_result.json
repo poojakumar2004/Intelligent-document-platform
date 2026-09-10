@@ -1,0 +1,141 @@
+{
+  "document_name": "sample_invoice_validation_mismatch.pdf",
+  "document_type": "invoice",
+  "processing_status": "PASS",
+  "overall_confidence": 0.94,
+  "file_validation": {
+    "file_type": "application/pdf",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 1,
+    "status": "PASS"
+  },
+  "extracted_data": {
+    "invoice_number": {
+      "value": "INV-FAIL-001",
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Invoice: INV-FAIL-001",
+        "page_number": 1
+      }
+    },
+    "invoice_date": {
+      "value": "2026-08-15",
+      "confidence": 0.97,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Date: 2026-08-15",
+        "page_number": 1
+      }
+    },
+    "vendor_name": {
+      "value": "Acme Global Services",
+      "confidence": 0.96,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Acme Global Services",
+        "page_number": 1
+      }
+    },
+    "currency": {
+      "value": "USD",
+      "confidence": 0.99,
+      "page_number": 1
+    },
+    "subtotal": {
+      "value": 10000.0,
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Subtotal: ,000.00",
+        "page_number": 1
+      }
+    },
+    "tax_amount": {
+      "value": 1000.0,
+      "confidence": 0.97,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Tax (10%): ,000.00",
+        "page_number": 1
+      }
+    },
+    "discount": {
+      "value": 0.0,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": null
+    },
+    "total_amount": {
+      "value": 12500.0,
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Total Due: ,500.00",
+        "page_number": 1
+      }
+    },
+    "line_items": [
+      {
+        "description": "Consulting Hours",
+        "quantity": 10.0,
+        "unit_price": 1000.0,
+        "amount": 10000.0
+      }
+    ]
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "line_item_1_check",
+        "formula": "quantity * unit_price",
+        "operands": {
+          "quantity": 10.0,
+          "unit_price": 1000.0
+        },
+        "calculated_value": 10000.0,
+        "reported_value": 10000.0,
+        "variance": 0.0,
+        "status": "PASS",
+        "message": "Calculation matches reported value."
+      },
+      {
+        "name": "line_items_sum_check",
+        "formula": "sum(line_item_amounts)",
+        "operands": {
+          "sum_of_lines": 10000.0
+        },
+        "calculated_value": 10000.0,
+        "reported_value": 10000.0,
+        "variance": 0.0,
+        "status": "PASS",
+        "message": "Calculation matches reported value."
+      },
+      {
+        "name": "invoice_total_check",
+        "formula": "subtotal + tax_amount - discount",
+        "operands": {
+          "subtotal": 10000.0,
+          "tax_amount": 1000.0,
+          "discount": 0.0
+        },
+        "calculated_value": 11000.0,
+        "reported_value": 12500.0,
+        "variance": 1500.0,
+        "status": "FAIL",
+        "message": "Variance of 1500.00 exceeds tolerance of 0.05."
+      }
+    ],
+    "overall_status": "FAIL",
+    "issues": [
+      "invoice_total_check FAILED: calculated 11000.0, reported 12500.0, variance 1500.0"
+    ]
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_engine": "PyMuPDF-Native",
+    "processed_at": "2026-09-10T12:00:00Z",
+    "processing_time_ms": 420
+  }
+}

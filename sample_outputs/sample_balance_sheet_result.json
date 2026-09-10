@@ -1,0 +1,145 @@
+{
+  "document_name": "Consolidated Balance Sheet 2017.pdf",
+  "document_type": "balance_sheet",
+  "processing_status": "PASS",
+  "overall_confidence": 0.97,
+  "file_validation": {
+    "file_type": "application/pdf",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 1,
+    "status": "PASS"
+  },
+  "extracted_data": {
+    "statement_title": {
+      "value": "Consolidated Balance Sheet",
+      "confidence": 0.99,
+      "page_number": 1
+    },
+    "periods": [
+      "current",
+      "previous"
+    ],
+    "currency": {
+      "value": "USD",
+      "unit": "INR in '000",
+      "confidence": 0.98,
+      "page_number": 1
+    },
+    "period_data": {
+      "current": {},
+      "previous": {}
+    },
+    "financial_table": [],
+    "total_assets": {
+      "current": null,
+      "previous": null
+    },
+    "total_liabilities": {
+      "current": null,
+      "previous": null
+    }
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "balance_sheet_equity_assets_reconciliation",
+        "period": "current",
+        "formula": "total_capital_and_liabilities \u2248 total_assets",
+        "operands": {
+          "total_capital_and_liabilities": null
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE",
+        "message": "Required field not present in source document."
+      },
+      {
+        "name": "liabilities_components_sum_check",
+        "period": "current",
+        "formula": "capital + reserves + minority_interest + deposits + borrowings + other_liab",
+        "operands": {
+          "capital": null,
+          "reserves": null,
+          "deposits": null,
+          "borrowings": null
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE",
+        "message": "Required field not present in source document."
+      },
+      {
+        "name": "assets_components_sum_check",
+        "period": "current",
+        "formula": "cash + bank_balances + investments + advances + fixed_assets + other_assets",
+        "operands": {
+          "investments": null,
+          "advances": null,
+          "fixed_assets": null,
+          "other_assets": null
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE",
+        "message": "Required field not present in source document."
+      },
+      {
+        "name": "balance_sheet_equity_assets_reconciliation",
+        "period": "previous",
+        "formula": "total_capital_and_liabilities \u2248 total_assets",
+        "operands": {
+          "total_capital_and_liabilities": null
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE",
+        "message": "Required field not present in source document."
+      },
+      {
+        "name": "liabilities_components_sum_check",
+        "period": "previous",
+        "formula": "capital + reserves + minority_interest + deposits + borrowings + other_liab",
+        "operands": {
+          "capital": null,
+          "reserves": null,
+          "deposits": null,
+          "borrowings": null
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE",
+        "message": "Required field not present in source document."
+      },
+      {
+        "name": "assets_components_sum_check",
+        "period": "previous",
+        "formula": "cash + bank_balances + investments + advances + fixed_assets + other_assets",
+        "operands": {
+          "investments": null,
+          "advances": null,
+          "fixed_assets": null,
+          "other_assets": null
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE",
+        "message": "Required field not present in source document."
+      }
+    ],
+    "overall_status": "PASS",
+    "issues": []
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_engine": "None",
+    "processed_at": "2026-09-10T13:17:53.450508+00:00",
+    "processing_time_ms": 8501
+  }
+}

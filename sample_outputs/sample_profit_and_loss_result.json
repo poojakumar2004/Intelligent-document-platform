@@ -1,0 +1,205 @@
+{
+  "document_name": "Consolidated Profit & Loss 2017.pdf",
+  "document_type": "profit_and_loss",
+  "processing_status": "PASS",
+  "overall_confidence": 0.97,
+  "file_validation": {
+    "file_type": "application/pdf",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 1,
+    "status": "PASS"
+  },
+  "extracted_data": {
+    "statement_title": {
+      "value": "Consolidated Statement of Profit and Loss",
+      "confidence": 0.99,
+      "page_number": 1
+    },
+    "periods": [
+      "current",
+      "previous"
+    ],
+    "currency": {
+      "value": "USD",
+      "unit": "INR in '000",
+      "confidence": 0.98,
+      "page_number": 1
+    },
+    "period_data": {
+      "current": {},
+      "previous": {}
+    },
+    "financial_table": [],
+    "total_income": {
+      "current": null,
+      "previous": null
+    },
+    "total_expenditure": {
+      "current": null,
+      "previous": null
+    },
+    "net_profit": {
+      "current": null,
+      "previous": null
+    }
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "total_income_check",
+        "period": "current",
+        "formula": "interest_earned + other_income",
+        "operands": {
+          "interest_earned": null,
+          "other_income": null
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE",
+        "message": "Required field not present in source document."
+      },
+      {
+        "name": "total_expenditure_check",
+        "period": "current",
+        "formula": "interest_expended + operating_expenses + provisions_and_contingencies",
+        "operands": {
+          "interest_expended": null,
+          "operating_expenses": null,
+          "provisions": null
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE",
+        "message": "Required field not present in source document."
+      },
+      {
+        "name": "net_profit_before_minority_check",
+        "period": "current",
+        "formula": "total_income - total_expenditure",
+        "operands": {
+          "total_income": null,
+          "total_expenditure": null
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE",
+        "message": "Required field not present in source document."
+      },
+      {
+        "name": "profit_attributable_to_group_check",
+        "period": "current",
+        "formula": "net_profit_before_minority - minority_interest + associates_profit",
+        "operands": {
+          "net_profit_before_minority": null,
+          "minority_interest": null,
+          "associates_profit": 0.0
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE",
+        "message": "Required field not present in source document."
+      },
+      {
+        "name": "total_profit_available_for_appropriation_check",
+        "period": "current",
+        "formula": "group_profit + balance_brought_forward + impact_on_amalgamation",
+        "operands": {
+          "group_profit": null,
+          "balance_brought_forward": null,
+          "impact_on_amalgamation": 0.0
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE",
+        "message": "Required field not present in source document."
+      },
+      {
+        "name": "total_income_check",
+        "period": "previous",
+        "formula": "interest_earned + other_income",
+        "operands": {
+          "interest_earned": null,
+          "other_income": null
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE",
+        "message": "Required field not present in source document."
+      },
+      {
+        "name": "total_expenditure_check",
+        "period": "previous",
+        "formula": "interest_expended + operating_expenses + provisions_and_contingencies",
+        "operands": {
+          "interest_expended": null,
+          "operating_expenses": null,
+          "provisions": null
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE",
+        "message": "Required field not present in source document."
+      },
+      {
+        "name": "net_profit_before_minority_check",
+        "period": "previous",
+        "formula": "total_income - total_expenditure",
+        "operands": {
+          "total_income": null,
+          "total_expenditure": null
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE",
+        "message": "Required field not present in source document."
+      },
+      {
+        "name": "profit_attributable_to_group_check",
+        "period": "previous",
+        "formula": "net_profit_before_minority - minority_interest + associates_profit",
+        "operands": {
+          "net_profit_before_minority": null,
+          "minority_interest": null,
+          "associates_profit": 0.0
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE",
+        "message": "Required field not present in source document."
+      },
+      {
+        "name": "total_profit_available_for_appropriation_check",
+        "period": "previous",
+        "formula": "group_profit + balance_brought_forward + impact_on_amalgamation",
+        "operands": {
+          "group_profit": null,
+          "balance_brought_forward": null,
+          "impact_on_amalgamation": 0.0
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE",
+        "message": "Required field not present in source document."
+      }
+    ],
+    "overall_status": "PASS",
+    "issues": []
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_engine": "None",
+    "processed_at": "2026-09-10T13:18:02.014777+00:00",
+    "processing_time_ms": 25450
+  }
+}

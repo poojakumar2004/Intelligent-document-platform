@@ -1,0 +1,133 @@
+{
+  "document_name": "Consolidated Cash Flow Statement 2017.pdf",
+  "document_type": "cash_flow_statement",
+  "processing_status": "PASS",
+  "overall_confidence": 0.97,
+  "file_validation": {
+    "file_type": "application/pdf",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 2,
+    "status": "PASS"
+  },
+  "extracted_data": {
+    "statement_title": {
+      "value": "Consolidated Cash Flow Statement",
+      "confidence": 0.99,
+      "page_number": 1
+    },
+    "periods": [
+      "current",
+      "previous"
+    ],
+    "currency": {
+      "value": "USD",
+      "unit": "INR in '000",
+      "confidence": 0.98,
+      "page_number": 1
+    },
+    "period_data": {
+      "current": {},
+      "previous": {}
+    },
+    "financial_table": [],
+    "operating_cash_flow": {
+      "current": null,
+      "previous": null
+    },
+    "investing_cash_flow": {
+      "current": null,
+      "previous": null
+    },
+    "financing_cash_flow": {
+      "current": null,
+      "previous": null
+    },
+    "net_change_in_cash": {
+      "current": null,
+      "previous": null
+    },
+    "opening_cash": {
+      "current": null,
+      "previous": null
+    },
+    "closing_cash": {
+      "current": null,
+      "previous": null
+    }
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "net_change_in_cash_check",
+        "period": "current",
+        "formula": "operating_cf + investing_cf + financing_cf + fx_adjustment + amalgamation",
+        "operands": {
+          "operating_cash_flow": null,
+          "investing_cash_flow": null,
+          "financing_cash_flow": null,
+          "fx_translation_adjustment": 0.0,
+          "amalgamation_adjustment": 0.0
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE",
+        "message": "Required field not present in source document."
+      },
+      {
+        "name": "closing_cash_reconciliation_check",
+        "period": "current",
+        "formula": "opening_cash + net_increase_in_cash",
+        "operands": {
+          "opening_cash": null,
+          "net_change_in_cash": null
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE",
+        "message": "Required field not present in source document."
+      },
+      {
+        "name": "net_change_in_cash_check",
+        "period": "previous",
+        "formula": "operating_cf + investing_cf + financing_cf + fx_adjustment + amalgamation",
+        "operands": {
+          "operating_cash_flow": null,
+          "investing_cash_flow": null,
+          "financing_cash_flow": null,
+          "fx_translation_adjustment": 0.0,
+          "amalgamation_adjustment": 0.0
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE",
+        "message": "Required field not present in source document."
+      },
+      {
+        "name": "closing_cash_reconciliation_check",
+        "period": "previous",
+        "formula": "opening_cash + net_increase_in_cash",
+        "operands": {
+          "opening_cash": null,
+          "net_change_in_cash": null
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE",
+        "message": "Required field not present in source document."
+      }
+    ],
+    "overall_status": "PASS",
+    "issues": []
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_engine": "None",
+    "processed_at": "2026-09-10T13:18:27.483271+00:00",
+    "processing_time_ms": 12847
+  }
+}
