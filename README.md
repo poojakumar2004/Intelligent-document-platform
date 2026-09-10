@@ -231,8 +231,8 @@ The platform enforces the accounting reconciliation formulas specified in Sectio
 
 ### 💰 Cash Flow Statements
 - **Net Cash Change**: $\text{Operating CF} + \text{Investing CF} + \text{Financing CF} + \text{FX Adjustment} + \text{Amalgamation} \approx \text{Net Increase in Cash}$.
-- **Closing Cash Balance**: $\text{Opening Cash} + \text{Net Increase in Cash} \approx \text{Closing Cash \& Cash Equivalents}$.
-- *Sign Convention*: Negative / outflow values denoted by parentheses `(x)` or `-` are correctly parsed as negative floats.
+- **Closing Cash Balance:** `Opening Cash + Net Increase in Cash ≈ Closing Cash & Cash Equivalents`
+- **Sign Convention**: Negative / outflow values denoted by parentheses `(x)` or `-` are correctly parsed as negative floats.
 
 ### ⚖️ Tolerance & Missing Field Rule
 - **Tolerance**: Defaults to $\pm 0.05$ to prevent false failures caused by rounding fractions of a cent/paisa.
