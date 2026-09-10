@@ -9,6 +9,8 @@ An end-to-end, production-ready AI-powered document intelligence platform that i
 
 ## Demo Video
 
+"C:\Users\POOJA\Videos\Screen Recordings\Screen Recording 2026-09-10 213941.mp4"
+
 
 ## 🏗️ Overview & Architecture
 
