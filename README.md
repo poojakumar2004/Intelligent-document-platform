@@ -80,6 +80,7 @@ The platform is designed around a decoupled, 6-tier pipeline to guarantee high a
 - 🌿 Git
 
 ### ⚡ Installation Steps
+
 ```bash
 # 1. Clone the repository
 git clone https://github.com/PoojaKumar2004/intelligent-document-platform.git
@@ -87,9 +88,11 @@ cd intelligent-document-platform
 
 # 2. Create and activate a virtual environment
 python -m venv venv
-# On Windows:
+
+# On Windows
 .\venv\Scripts\activate
-# On Linux/macOS:
+
+# On Linux/macOS
 source venv/bin/activate
 
 # 3. Install dependencies
@@ -122,7 +125,7 @@ Open your browser at `http://localhost:8001/` to access the Dashboard, or `http:
 ### 📤 Process Document (`POST /api/v1/documents/process`)
 Accepts multipart form upload with `file` and `document_type` (`invoice`, `balance_sheet`, `profit_and_loss`, `cash_flow_statement`).
 
-**cURL Request:**
+**URL Request:**
 ```bash
 curl -X POST "http://localhost:8000/api/v1/documents/process" \
   -F "file=@sample_invoice.pdf" \
