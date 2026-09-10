@@ -6,6 +6,9 @@
 An end-to-end, production-ready AI-powered document intelligence platform that ingests native and scanned financial documents (Invoices, Balance Sheets, Profit & Loss Statements, and Cash Flow Statements), validates file constraints, performs OCR and complete structured field/table extraction with evidence grounding, verifies domain-specific financial calculations, persists records in a persistent ACID database, and surfaces results via an interactive dashboard and OpenAPI-compliant REST APIs.
 
 ---
+## Demo Video
+
+https://github.com/user-attachments/assets/c05c01de-76a0-4442-8534-0f1791c0b4cf
 
 ## 🏗️ Overview & Architecture
 
