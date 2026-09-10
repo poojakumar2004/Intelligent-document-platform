@@ -38,6 +38,7 @@ The platform is designed around a decoupled, 6-tier pipeline to guarantee high a
 4. **🧮 Financial Validation Engine**: Performs independent mathematical checks for all supported financial document types with configurable numerical tolerance ($\pm 0.05$).
 
 ---
+```bash
 
 ## 🛠️ Technology Stack & Rationale
 
@@ -70,6 +71,7 @@ The platform is designed around a decoupled, 6-tier pipeline to guarantee high a
 - 🌿 Git
 
 ### ⚡ Installation Steps
+```bash
 # 1. Clone the repository
 git clone https://github.com/PoojaKumar2004/intelligent-document-platform.git
 cd intelligent-document-platform
@@ -89,6 +91,7 @@ cp .env.example .env
 
 # 5. Start the platform server
 python -m uvicorn backend.app.main:app --host 0.0.0.0 --port 8001 --reload
+```
 
 Open your browser at `http://localhost:8001/` to access the Dashboard, or `http://localhost:80001docs` to test via Swagger UI.
 
@@ -202,7 +205,7 @@ The platform enforces the accounting reconciliation formulas specified in Sectio
 - **Cash & Change**: $\text{Cash Paid} - \text{Total Amount} \approx \text{Change}$ (e.g. retail receipts).
 
 ### 🏦 Balance Sheets
-- **Fundamental Accounting Equation**: $\text{Total Capital \& Liabilities} \approx \text{Total Assets}$.
+- **Fundamental Accounting Equation**: $\text{Total Capital \ Liabilities} \approx \text{Total Assets}$.
 - **Liabilities Component Check**: $\text{Capital} + \text{Reserves} + \text{Minority Interest} + \text{Deposits} + \text{Borrowings} + \text{Other Liabilities} \approx \text{Total Liabilities}$.
 - **Assets Component Check**: $\text{Cash/RBI} + \text{Bank Balances} + \text{Investments} + \text{Advances} + \text{Fixed Assets} + \text{Other Assets} \approx \text{Total Assets}$.
 - *Multi-Period*: Validated independently for each comparative financial year/period present.
