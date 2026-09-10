@@ -43,7 +43,6 @@ The platform is designed around a decoupled, 6-tier pipeline to guarantee high a
 
 | 🏷️ **Component** | ⚙️ **Technology** | 💡 **Rationale** |
 |:-----------------|:------------------|:-----------------|
-```
 | 🚀 **Backend Framework** | **FastAPI** | High-performance asynchronous REST framework with native OpenAPI 3.0 (Swagger UI at `/docs`), Pydantic data validation, and multipart form support. |
 | 📄 **Document Processing** | **PyMuPDF (fitz)** | High-speed, robust PDF parsing and rasterization without requiring external C/C++ dependencies like Poppler. |
 | 🔍 **OCR Service** | **OCR.Space REST API** | Free-tier cloud OCR engine providing high-precision table extraction without requiring system-level Tesseract installations. |
@@ -52,6 +51,8 @@ The platform is designed around a decoupled, 6-tier pipeline to guarantee high a
 | 🎨 **Frontend** | **Jinja2 + HTML5 / CSS3 / Vanilla JS** | Lightweight, zero-build-step responsive UI with status badges, formula breakdown cards, and raw JSON copy/export features. |
 | 🧪 **Testing** | **unittest & pytest** | Comprehensive unit and integration test coverage for validation formulas, edge cases, and API routes. |
 ```
+```
+
 ## 🌍 Deployed URLs & Public Repository
 
 | 🔗 Resource | 🌐 URL |
