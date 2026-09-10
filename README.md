@@ -26,7 +26,7 @@ The platform is designed around a decoupled, 6-tier pipeline to guarantee high a
 💾 Persistent Storage
         ↓
 🌐 Delivery Layer (Dashboard + REST API)
-```
+
 
 ![Architecture Diagram](docs/architecture.png)
 
@@ -62,7 +62,6 @@ The platform is designed around a decoupled, 6-tier pipeline to guarantee high a
 | **Interactive Swagger Docs** | `https://intelligent-document-platform.onrender.com/docs` |
 | **System Health Endpoint** | `https://intelligent-document-platform.onrender.com/api/v1/health` |
 
----
 
 ## 🚀 Local Setup & Quickstart
 
@@ -71,7 +70,6 @@ The platform is designed around a decoupled, 6-tier pipeline to guarantee high a
 - 🌿 Git
 
 ### ⚡ Installation Steps
-```bash
 # 1. Clone the repository
 git clone https://github.com/PoojaKumar2004/intelligent-document-platform.git
 cd intelligent-document-platform
@@ -91,11 +89,8 @@ cp .env.example .env
 
 # 5. Start the platform server
 python -m uvicorn backend.app.main:app --host 0.0.0.0 --port 8001 --reload
-```
 
 Open your browser at `http://localhost:8001/` to access the Dashboard, or `http://localhost:80001docs` to test via Swagger UI.
-
----
 
 ## 🔑 Environment Variables (`.env.example`)
 
@@ -109,7 +104,6 @@ Open your browser at `http://localhost:8001/` to access the Dashboard, or `http:
 | `OCR_SPACE_API_KEY` | `helloworld` | Free OCR.Space API key (obtain free key at ocr.space). |
 | `GEMINI_API_KEY` | `""` | Optional Google Gemini API key for multimodal vision extraction. |
 
----
 
 ## 📡 API Reference & Request Examples
 
@@ -245,20 +239,17 @@ The platform enforces the accounting reconciliation formulas specified in Sectio
 
 Execute the complete test suite containing 17 automated unit and integration tests:
 
-```bash
 # Run all tests
 python -m unittest discover backend/tests
 
 # Or with pytest
 pytest backend/tests/ -v
-```
 
 ### ✅ Test Breakdown
 - 🧮`test_validation.py`: Tests invoice math, balance sheet reconciliation, P&L formulas, cash flow equations, negative bracket parsing `(16,909)`, tolerance bounds, and `NOT_APPLICABLE` null handling.
 - 📄`test_extraction.py`: Tests document validation rules: valid PDF/JPG acceptance, unsupported extensions rejection (`.txt`, `.exe`), zero-byte empty file rejection, and $> 3$ pages limit rejection.
 - 🌐`test_api.py`: Tests `/api/v1/health`, multipart upload `/api/v1/documents/process`, GET by name, document listing, and 404/400 error handling.
 
----
 
 ## 📂 Sample Outputs
 
@@ -270,7 +261,6 @@ Pre-computed and verified sample outputs are located in the `sample_outputs/` fo
 - ❌ `sample_validation_failure_result.json`: Controlled demonstration of a mathematical calculation mismatch with failure issues list.
 - 🚫 `sample_unsupported_file_error.json`: Standardized error envelope for rejected file formats.
 
----
 
 ## 🚧 Known Limitations & Production Improvements
 
