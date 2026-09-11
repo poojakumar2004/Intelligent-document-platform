@@ -69,11 +69,11 @@ The platform is designed around a decoupled, 6-tier pipeline to guarantee high a
 
 | 🔗 Resource | 🌐 URL |
 | :--- | :--- |
-| **Public GitHub Repository** | [https://github.com/PoojaKumar2004/intelligent-document-platform](https://github.com/PoojaKumar2004/intelligent-document-platform) *(Update with your repo)* |
-| **Live Deployed Frontend** | `https://intelligent-document-platform.onrender.com/` *(Render/Railway URL)* |
-| **Live Backend API Base** | `https://intelligent-document-platform.onrender.com/api/v1` |
-| **Interactive Swagger Docs** | `https://intelligent-document-platform.onrender.com/docs` |
-| **System Health Endpoint** | `https://intelligent-document-platform.onrender.com/api/v1/health` |
+| **Public GitHub Repository** | [https://github.com/PoojaKumar2004/intelligent-document-platform](https://github.com/PoojaKumar2004/intelligent-document-platform)
+| **Live Deployed Frontend** | [`https://intelligent-document-platform-lk0l.onrender.com/`](https://intelligent-document-platform-lk0l.onrender.com/)
+| **Live Backend API Base** | `[https://intelligent-document-platform.onrender.com/api/v1](https://intelligent-document-platform-lk0l.onrender.com/api/v1)` |
+| **Interactive Swagger Docs** | [`https://intelligent-document-platform.onrender.com/docs` |](https://intelligent-document-platform-lk0l.onrender.com/docs)
+| **System Health Endpoint** | [`https://intelligent-document-platform.onrender.com/api/v1/health` |](https://intelligent-document-platform-lk0l.onrender.com/api/v1/health)
 
 
 ## 🚀 Local Setup & Quickstart
