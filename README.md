@@ -10,6 +10,10 @@ An end-to-end, production-ready AI-powered document intelligence platform that i
 
 https://github.com/user-attachments/assets/c05c01de-76a0-4442-8534-0f1791c0b4cf
 
+## PPT
+
+[`https://docs.google.com/presentation/d/1QC3kqmtCCeoMynTHXoqFi-T05_-mrLnI/edit?usp=sharing&ouid=113332746436580289213&rtpof=true&sd=true`]
+
 ## 🏗️ Overview & Architecture
 
 The platform is designed around a decoupled, 6-tier pipeline to guarantee high availability, testability, and strict financial auditability:
